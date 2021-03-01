@@ -6,7 +6,7 @@ import io.reactivex.Flowable
 import io.reactivex.Observable
 
 @Dao
-interface QoutesDao {
+interface QuotesDao {
 
     @Query("SELECT * FROM quotes")
     fun selectQuotes(): Flowable<List<QuoteDB>>
@@ -20,7 +20,4 @@ interface QoutesDao {
     @Query("DELETE FROM quotes")
     fun deleteQuotes():Completable
 
-    fun saveInDb(listQoutes: List<QuoteDB>):Completable {
-        return deleteQuotes().andThen(insertAll(listQoutes))
-    }
 }

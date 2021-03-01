@@ -8,7 +8,7 @@ import com.example.android.usdTrigger.di.modules.view.ViewComponent
 import com.example.android.usdTrigger.di.modules.view.ViewModule
 import com.example.android.usdTrigger.di.modules.viewmodel.MapViewModel
 import com.example.android.usdTrigger.di.modules.viewmodel.ViewModelBuilderModule
-import com.example.android.usdTrigger.repository.QoutesRepository
+import com.example.android.usdTrigger.repository.QuotesRepository
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -25,6 +25,6 @@ interface AppComponent {
     }
     fun viewComponent(): ViewComponent.Factory
     fun inject(application: App)
-    val quoutesRepo: QoutesRepository
+    val quoutesRepo: QuotesRepository
 
 }

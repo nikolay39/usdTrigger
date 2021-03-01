@@ -27,32 +27,36 @@ import com.example.android.usdTrigger.repository.database.QuoteDB
 import java.text.SimpleDateFormat
 import java.util.*
 
-class QuotesLiniearAdapter(private val quotesList: List<QuoteDB>) :
-        ListAdapter<QuoteDB, QuotesLiniearAdapter.QuotViewHolder>(DiffCallback) {
-
+class QuotesLiniearAdapter() :
+        ListAdapter<QuoteDB, QuotesLiniearAdapter.QuotViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuotViewHolder {
-        val binding = QuoteListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = QuoteListItemBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return QuotViewHolder(binding)
     }
-    override fun getItemCount() = quotesList.size
+
     override fun onBindViewHolder(holder: QuotViewHolder, position: Int) {
-        with(holder){
-            val quote = quotesList[position];
+        holder.bind(getItem(position))
+    }
+
+    inner class QuotViewHolder(val binding: QuoteListItemBinding)
+        :RecyclerView.ViewHolder(binding.root) {
+        fun bind(quote: QuoteDB) {
             val date = Date(quote.date)
             val format = SimpleDateFormat("yyyy.MM.dd")
             binding.date.text = format.format(date)
             binding.value.text = quote.value.toString();
         }
     }
-    companion object DiffCallback : DiffUtil.ItemCallback<QuoteDB>() {
-        override fun areItemsTheSame(oldItem: QuoteDB, newItem: QuoteDB): Boolean {
-            return oldItem === newItem
-        }
-        override fun areContentsTheSame(oldItem: QuoteDB, newItem: QuoteDB): Boolean {
-            return oldItem.value == newItem.value
-        }
-    }
-    inner class QuotViewHolder(val binding: QuoteListItemBinding)
-        :RecyclerView.ViewHolder(binding.root)
+}
+class DiffCallback : DiffUtil.ItemCallback<QuoteDB>() {
+    override fun areItemsTheSame(oldItem: QuoteDB, newItem: QuoteDB):Boolean = oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: QuoteDB, newItem: QuoteDB):Boolean  =
+            (oldItem.date == newItem.date) && (oldItem.value==newItem.value)
+
 }

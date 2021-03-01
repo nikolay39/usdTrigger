@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.WorkerFactory
 import androidx.work.WorkerParameters
-import com.example.android.usdTrigger.repository.QoutesRepository
+import com.example.android.usdTrigger.repository.QuotesRepository
 
 class DataWorkerFactory(
-        private val repository: QoutesRepository
+        private val repository: QuotesRepository
 ) : WorkerFactory() {
     override fun createWorker(
             applicationContext : Context,

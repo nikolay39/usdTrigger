@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Sunshine.iml" filepath="$PROJECT_DIR$/.idea/modules/Sunshine.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Sunshine.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Sunshine.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/usdTrigger.iml" filepath="$PROJECT_DIR$/.idea/modules/usdTrigger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/usdTrigger.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/usdTrigger.app.iml" />
     </modules>
   </component>
 </project>

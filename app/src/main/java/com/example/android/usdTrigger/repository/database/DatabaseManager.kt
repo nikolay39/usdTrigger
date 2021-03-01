@@ -5,5 +5,5 @@ import androidx.room.RoomDatabase
 
 @Database(entities = [QuoteDB::class], version = 1, exportSchema = false)
 abstract class DatabaseManager : RoomDatabase() {
-    abstract fun qoutesDao(): QoutesDao
+    abstract fun qoutesDao(): QuotesDao
 }

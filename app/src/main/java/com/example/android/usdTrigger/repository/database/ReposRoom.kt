@@ -5,21 +5,18 @@ import io.reactivex.Flowable
 import io.reactivex.Observable
 
 
-class ReposRoom(private val qoutesDao: QoutesDao) : ReposDb{
+class ReposRoom(private val quotesDao: QuotesDao) : ReposDb{
 
     override fun selectQuotes(): Flowable<List<QuoteDB>> {
-       return qoutesDao.selectQuotes()
+       return quotesDao.selectQuotes()
     }
     override fun selectLastDate(): Observable<Long> {
-        return qoutesDao.selectLastDate()
+        return quotesDao.selectLastDate()
     }
     override fun deleteQuotes(): Completable{
-        return qoutesDao.deleteQuotes()
+        return quotesDao.deleteQuotes()
     }
     override fun insertAll(listQuoteDBS: List<QuoteDB>): Completable {
-        return qoutesDao.insertAll(listQuoteDBS)
-    }
-    override fun saveInDb(listQuoteDBS: List<QuoteDB>): Completable {
-            return qoutesDao.saveInDb(listQuoteDBS)
+        return quotesDao.insertAll(listQuoteDBS)
     }
 }

@@ -1,6 +1,6 @@
 package com.example.android.usdTrigger.di.modules.db
 
-import com.example.android.usdTrigger.repository.database.QoutesDao
+import com.example.android.usdTrigger.repository.database.QuotesDao
 import com.example.android.usdTrigger.repository.database.ReposDb
 import com.example.android.usdTrigger.repository.database.ReposRoom
 import dagger.Module
@@ -11,7 +11,7 @@ import javax.inject.Singleton
 class DbModule {
     @Provides
     @Singleton
-    fun reposDb(qoutesDao: QoutesDao): ReposDb {
-        return ReposRoom(qoutesDao)
+    fun reposDb(quotesDao: QuotesDao): ReposDb {
+        return ReposRoom(quotesDao)
     }
 }

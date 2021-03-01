@@ -9,5 +9,4 @@ interface ReposDb {
         fun selectLastDate(): Observable<Long>
         fun deleteQuotes(): Completable
         fun insertAll(listQuoteDBS: List<QuoteDB>):Completable
-        fun saveInDb(listQuoteDBS: List<QuoteDB>): Completable
 }

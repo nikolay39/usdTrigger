@@ -14,4 +14,5 @@ const val NOTIFICATION_ID = 1
 // Other keys
 const val TAG_OUTPUT = "OUTPUT"
 
-const val DELAY_TIME_MILLIS: Long = 3000
+const val DELAY_TIME_MILLIS: Long = 86400000
+const val TREND_LEVEL: Float = 75.00F

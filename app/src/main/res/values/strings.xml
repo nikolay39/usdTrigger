@@ -247,5 +247,7 @@
     <string name="notification_channel_id">refresh_forecast_</string>
     <string name="notification_title">forecast weather update!</string>
     <string name="forecast_description_notification">view new forecast</string>
+    <string name="above_trend">Выше тренда</string>
+    <string name="below_trend">Ниже тренда</string>
 
 </resources>

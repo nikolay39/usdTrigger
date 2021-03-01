@@ -6,7 +6,7 @@ import androidx.lifecycle.*
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.android.usdTrigger.repository.database.QuoteDB
-import com.example.android.usdTrigger.repository.QoutesRepository
+import com.example.android.usdTrigger.repository.QuotesRepository
 import com.example.android.usdTrigger.workers.LoadDataWorker
 import com.example.android.usdTrigger.workers.TAG_OUTPUT
 import timber.log.Timber
@@ -14,7 +14,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class OverviewViewModel @Inject constructor( val repository: QoutesRepository, applicationContext: Context) : ViewModel() {
+class OverviewViewModel @Inject constructor(val repository: QuotesRepository, applicationContext: Context) : ViewModel() {
     lateinit var  quotes: LiveData<List<QuoteDB>>
     private val workManager = WorkManager.getInstance(applicationContext)
 
@@ -26,20 +26,8 @@ class OverviewViewModel @Inject constructor( val repository: QoutesRepository, a
 
     }
     private fun addDayWorker() {
-        val currentDate = Calendar.getInstance()
-        val dueDate = Calendar.getInstance()
-
-
-        dueDate.set(Calendar.HOUR_OF_DAY, 1)
-        dueDate.set(Calendar.MINUTE, 7)
-        dueDate.set(Calendar.SECOND, 0)
-
-        if (dueDate.before(currentDate)) {
-            dueDate.add(Calendar.HOUR_OF_DAY, 24)
-        }
-        val timeDiff = dueDate.timeInMillis - currentDate.timeInMillis
         val dailyWorkRequest = OneTimeWorkRequestBuilder<LoadDataWorker>()
-                .setInitialDelay(timeDiff, TimeUnit.MILLISECONDS)
+                .setInitialDelay(0, TimeUnit.MILLISECONDS)
                 .addTag(TAG_OUTPUT)
                 .build()
         workManager.enqueue(dailyWorkRequest)

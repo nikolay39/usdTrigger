@@ -4,18 +4,15 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.work.CoroutineWorker
-import androidx.work.Operation.SUCCESS
 import androidx.work.WorkerParameters
-import androidx.work.workDataOf
 import com.example.android.usdTrigger.common.receiver.ForecastReceiver
-import com.example.android.usdTrigger.repository.QoutesRepository
+import com.example.android.usdTrigger.repository.QuotesRepository
 import retrofit2.HttpException
-import timber.log.Timber
 import javax.inject.Inject
 
 private val REQUEST_CODE = 0
 
-class RefreshDataWorker   @Inject constructor(val repository: QoutesRepository, appContext : Context, params: WorkerParameters):
+class RefreshDataWorker   @Inject constructor(val repository: QuotesRepository, appContext : Context, params: WorkerParameters):
     CoroutineWorker(appContext, params) {
     companion object {
         const val WORK_NAME = "RefreshDataWorker"
